@@ -6,6 +6,7 @@ import './api/axiosDefaults'
 import SignUpForm from './pages/auth/SignUpForm'
 import SignInForm from './pages/auth/SignInForm'
 import PostCreateForm from './pages/posts/PostCreateForm'
+import PostEditForm from './pages/posts/PostEditForm'
 import PostPage from './pages/posts/PostPage'
 import PostsPage from './pages/posts/PostsPage'
 import { useCurrentUser } from './contexts/currentUserContexts'
@@ -28,11 +29,12 @@ function App() {
                          />
                     <Route exact path="/liked" 
                         render={() => <PostsPage message="No results found. Adjust your search keyword or like a post." 
-                        filter={`likes__owner__profiles=${profile_id}&ordering=-likes__created_at&`}/>}
+                        filter={`likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}/>}
                          />
                     <Route exact path="/signin" render={() => <SignInForm />} />
                     <Route exact path="/signup" render={() => <SignUpForm />} />
                     <Route exact path="/posts/create" render={() => <PostCreateForm />} />
+                    <Route exact path="/posts/:id/edit" render={() => <PostEditForm />} />
                     <Route exact path="/posts/:id" render={() => <PostPage />} /> 
                     <Route render={() => <h1>Page not found!</h1>} />
                 </ Switch>
